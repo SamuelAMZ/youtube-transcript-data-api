@@ -8,7 +8,7 @@ app.get("/data", (req, res) => {
 
   //   checks
   if (videoQuery === "" || videoQuery === null) {
-    res.status(400).json("invalid video");
+    res.status(400).json({ error: { code: "400", message: "invalide video" } });
     return;
   }
 
@@ -16,11 +16,11 @@ app.get("/data", (req, res) => {
   (async () => {
     try {
       console.log(req.query);
-      let data = await scrapper();
+      let data = await scrapper(videoQuery);
 
-      res.json({ data: data });
+      res.status(200).json({ data: data });
     } catch (error) {
-      res.status(500).json("internal error");
+      res.status(500).json({ error: { code: "500", message: "server error" } });
       console.log(error.message);
     }
   })();

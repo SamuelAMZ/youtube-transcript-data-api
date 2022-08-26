@@ -4,7 +4,7 @@ const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 puppeteer.use(StealthPlugin());
 
-const scrapper = async () => {
+const scrapper = async (videoUrl) => {
   const browser = await puppeteer.launch({
     headless: true,
   });
@@ -16,7 +16,7 @@ const scrapper = async () => {
     deviceScaleFactor: 1,
   });
   try {
-    await page.goto("https://www.youtube.com/watch?v=CuWowKXsNHg", {
+    await page.goto(videoUrl, {
       waitUntil: "networkidle2",
     });
 
@@ -45,7 +45,7 @@ const scrapper = async () => {
         .split("\n")
     );
 
-    console.log(yt);
+    console.log("ok");
     return yt;
   } catch (error) {
     console.log(`${error}`);
