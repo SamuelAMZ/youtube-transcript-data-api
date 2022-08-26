@@ -4,7 +4,7 @@ const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 puppeteer.use(StealthPlugin());
 
-(async () => {
+const scrapper = async () => {
   const browser = await puppeteer.launch({
     headless: true,
   });
@@ -46,10 +46,13 @@ puppeteer.use(StealthPlugin());
     );
 
     console.log(yt);
+    return yt;
   } catch (error) {
     console.log(`${error}`);
   }
 
   // close browser
   await browser.close();
-})();
+};
+
+module.exports = scrapper;
