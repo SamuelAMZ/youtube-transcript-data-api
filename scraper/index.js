@@ -16,24 +16,22 @@ const scrapper = async (videoUrl) => {
     deviceScaleFactor: 1,
   });
   try {
-    await page.goto(videoUrl, {
-      waitUntil: "networkidle2",
-    });
+    await page.goto(videoUrl);
 
     // wait 1sec
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(1000);
 
     const button1 = await page.$(
       "#button.dropdown-trigger.style-scope.ytd-menu-renderer"
     );
     await button1.evaluate((b) => b.click());
 
-    await page.waitForTimeout(500);
+    // await page.waitForTimeout(500);
 
     const button2 = await page.$$(".style-scope.ytd-menu-popup-renderer");
     await button2[2].evaluate((b) => b.click());
 
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(1000);
 
     const yt = await page.evaluate(() =>
       Array.from(

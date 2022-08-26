@@ -6,6 +6,8 @@ const dataRouter = require("../routes/data.js");
 const timeRouter = require("../routes/time.js");
 const textRouter = require("../routes/text.js");
 const timeTextRouter = require("../routes/timeText.js");
+const wordsRouter = require("../routes/words.js");
+const sentencesRouter = require("../routes/sentences.js");
 
 /*   
     @desc: all 3 data text, timestamp, and both object pairs route 
@@ -34,5 +36,19 @@ app.use("/api/v1/data/time", timeRouter);
     @query: required (?v=url)
 */
 app.use("/api/v1/data/timeText", timeTextRouter);
+
+/*   
+    @desc: most present words classed data route 
+    @method: GET
+    @query: required (?v=url)
+*/
+app.use("/api/v1/data/words", wordsRouter);
+
+/*   
+    @desc: most present sentences classed 1 data route 
+    @method: GET
+    @query: required (?v=url)
+*/
+app.use("/api/v1/data/sentences", sentencesRouter);
 
 app.listen(process.env.PORT || 5000);
