@@ -45,7 +45,6 @@ const scrapper = async (videoUrl) => {
         .split("\n")
     );
 
-    console.log("ok");
     return yt;
   } catch (error) {
     console.log(`${error}`);

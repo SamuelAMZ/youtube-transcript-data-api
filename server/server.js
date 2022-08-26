@@ -1,29 +1,38 @@
 const express = require("express");
 require("dotenv");
 const app = express();
-const scrapper = require("../scraper/index.js");
+// routers
+const dataRouter = require("../routes/data.js");
+const timeRouter = require("../routes/time.js");
+const textRouter = require("../routes/text.js");
+const timeTextRouter = require("../routes/timeText.js");
 
-app.get("/data", (req, res) => {
-  let videoQuery = req.query.v;
+/*   
+    @desc: all 3 data text, timestamp, and both object pairs route 
+    @method: GET
+    @query: required (?v=url)
+*/
+app.use("/api/v1/data", dataRouter);
 
-  //   checks
-  if (videoQuery === "" || videoQuery === null) {
-    res.status(400).json({ error: { code: "400", message: "invalide video" } });
-    return;
-  }
+/*   
+    @desc: text only data route 
+    @method: GET
+    @query: required (?v=url)
+*/
+app.use("/api/v1/data/text", textRouter);
 
-  // data sending
-  (async () => {
-    try {
-      console.log(req.query);
-      let data = await scrapper(videoQuery);
+/*   
+    @desc: time only data route 
+    @method: GET
+    @query: required (?v=url)
+*/
+app.use("/api/v1/data/time", timeRouter);
 
-      res.status(200).json({ data: data });
-    } catch (error) {
-      res.status(500).json({ error: { code: "500", message: "server error" } });
-      console.log(error.message);
-    }
-  })();
-});
+/*   
+    @desc: text and time only data route 
+    @method: GET
+    @query: required (?v=url)
+*/
+app.use("/api/v1/data/timeText", timeTextRouter);
 
 app.listen(process.env.PORT || 5000);
