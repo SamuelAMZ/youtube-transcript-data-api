@@ -46,7 +46,7 @@ const scrapper = async (videoUrl) => {
 
     return yt;
   } catch (error) {
-    console.log(`${error}`);
+    console.log(`error with puppeteer code --- ${error}`);
   }
 
   // close browser

@@ -33,7 +33,7 @@ dataRooter.get("/", (req, res) => {
       res.status(200).json({ data: dataContent });
     } catch (error) {
       res.status(500).json({ error: { code: "500", message: "server error" } });
-      console.log(error.message);
+      console.log(`error with data file code --- ${error}`);
     }
   })();
 });
