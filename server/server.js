@@ -10,7 +10,7 @@ const wordsRouter = require("../routes/words.js");
 const sentencesRouter = require("../routes/sentences.js");
 
 app.get("/", (req, res) => {
-  res.send("I' m up");
+  res.send("server up");
 });
 
 /*   
