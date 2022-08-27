@@ -20,7 +20,7 @@ const scrapper = async (videoUrl) => {
     await page.goto(videoUrl);
 
     // wait 1sec
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(5000);
 
     const button1 = await page.$(
       "#button.dropdown-trigger.style-scope.ytd-menu-renderer"
@@ -32,7 +32,7 @@ const scrapper = async (videoUrl) => {
     const button2 = await page.$$(".style-scope.ytd-menu-popup-renderer");
     await button2[2].evaluate((b) => b.click());
 
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(5000);
 
     const yt = await page.evaluate(() =>
       Array.from(
