@@ -1,5 +1,6 @@
 name: CI-SFTP
 
+<<<<<<< HEAD
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -7,6 +8,15 @@ on:
     branches: [main]
   #  pull_request:
   #    branches: [ main ]
+=======
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+>>>>>>> 01d2e1451818cd4578c8fc819a4cb3494cbef1d7
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -19,7 +29,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> 01d2e1451818cd4578c8fc819a4cb3494cbef1d7
       - name: SFTP Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
@@ -28,10 +42,20 @@ jobs:
           port: 22 # default is 22
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+<<<<<<< HEAD
+=======
+          
+>>>>>>> 01d2e1451818cd4578c8fc819a4cb3494cbef1d7
           # will put all file under this path
           local_path: ./* # default is ./*
           # files will copy to under remote_path
           remote_path: /youtube-transcript-data-api
+<<<<<<< HEAD
 
           # sftp args
           args: "-o ConnectTimeout=5"
+=======
+          
+          # sftp args
+          args: '-o ConnectTimeout=5'
+>>>>>>> 01d2e1451818cd4578c8fc819a4cb3494cbef1d7
