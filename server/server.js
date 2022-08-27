@@ -8,8 +8,14 @@ const textRouter = require("../routes/text.js");
 const timeTextRouter = require("../routes/timeText.js");
 const wordsRouter = require("../routes/words.js");
 const sentencesRouter = require("../routes/sentences.js");
+// puppeteer
+const puppeteer = require("puppeteer-extra");
 
-app.get("/", (req, res) => {
+// add stealth plugin and use defaults (all evasion techniques)
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+puppeteer.use(StealthPlugin());
+
+app.get("/", async (req, res) => {
   res.send("server up");
 });
 
