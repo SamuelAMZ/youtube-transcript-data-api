@@ -61,4 +61,6 @@ app.use("/api/v1/data/words", wordsRouter);
 */
 app.use("/api/v1/data/sentences", sentencesRouter);
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 6000, () => {
+  console.log("server up");
+});
